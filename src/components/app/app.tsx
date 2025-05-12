@@ -15,8 +15,17 @@ import styles from './app.module.css';
 import { Route, Routes, useLocation, useNavigate } from 'react-router-dom';
 import { ProtectedRoute } from '../protected-route/ProtectedRoute';
 import { Modal } from '../modal';
+import { useDispatch } from '../../services/store';
+import { useEffect } from 'react';
+import { fetchIngredients } from '../../services/ingredientsSlice';
 
 const App = () => {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchIngredients());
+  }, [dispatch]);
+
   const location = useLocation();
   const navigate = useNavigate();
   const background = location.state?.background;
