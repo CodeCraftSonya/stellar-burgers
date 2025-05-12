@@ -88,8 +88,6 @@ const App = () => {
             </ProtectedRoute>
           }
         />
-
-        {/* Роуты для модалок */}
         <Route path='/feed/:number' element={<OrderInfo />} />
         <Route path='/ingredients/:id' element={<IngredientDetails />} />
         <Route
@@ -100,12 +98,8 @@ const App = () => {
             </ProtectedRoute>
           }
         />
-
-        {/* Роут для 404 */}
         <Route path='*' element={<NotFound404 />} />
       </Routes>
-
-      {/* Модальные окна */}
       {background && (
         <Routes>
           <Route
