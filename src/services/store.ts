@@ -6,9 +6,11 @@ import {
   useSelector as selectorHook
 } from 'react-redux';
 import ingredientsSlice from './ingredientsSlice';
+import orderSlice from './orderSlice';
 
 const rootReducer = combineSlices({
-  ingredients: ingredientsSlice
+  ingredients: ingredientsSlice,
+  order: orderSlice
 });
 
 const store = configureStore({
