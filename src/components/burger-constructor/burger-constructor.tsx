@@ -1,9 +1,8 @@
 import { FC, useMemo } from 'react';
 import { TConstructorIngredient } from '@utils-types';
 import { BurgerConstructorUI } from '@ui';
-import { RootState, useSelector } from '../../services/store';
-import { useDispatch } from 'react-redux';
-import { clearConstructor } from '../../services/orderSlice';
+import { RootState, useDispatch, useSelector } from '../../services/store';
+import { clearConstructor, sendOrder } from '../../services/orderSlice';
 
 export const BurgerConstructor: FC = () => {
   const constructorItems = useSelector(
@@ -20,7 +19,7 @@ export const BurgerConstructor: FC = () => {
 
   const onOrderClick = () => {
     if (!constructorItems.bun || orderRequest) return;
-    // dispatch(sendOrder());
+    dispatch(sendOrder());
   };
 
   const closeOrderModal = () => {
