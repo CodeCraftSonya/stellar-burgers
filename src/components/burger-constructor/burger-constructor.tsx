@@ -5,7 +5,8 @@ import { RootState, useDispatch, useSelector } from '../../services/store';
 import {
   clearConstructor,
   getNewOrderData,
-  sendOrder
+  sendOrder,
+  setOrderModalData
 } from '../../services/orderSlice';
 import { useLocation, useNavigate } from 'react-router-dom';
 
@@ -28,11 +29,6 @@ export const BurgerConstructor: FC = () => {
   const location = useLocation();
   const { user, isLoading } = useSelector((state: RootState) => state.auth);
 
-  // const onOrderClick = () => {
-  //   if (!constructorItems.bun || orderRequest) return;
-  //   dispatch(sendOrder());
-  // };
-
   const onOrderClick = () => {
     if (!user && !isLoading)
       navigate('/login', {
@@ -44,6 +40,7 @@ export const BurgerConstructor: FC = () => {
   };
 
   const closeOrderModal = () => {
+    dispatch(setOrderModalData(null));
     dispatch(clearConstructor());
   };
 
