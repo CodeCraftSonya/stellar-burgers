@@ -72,7 +72,12 @@ const orderSlice = createSlice({
       state.orderModalData = action.payload;
     },
     clearConstructor(state) {
-      state = initialState;
+      state.constructorItems = {
+        bun: null,
+        ingredients: []
+      };
+      state.orderRequest = false;
+      state.orderModalData = null;
     },
     moveIngredientUp(state, action: PayloadAction<string>) {
       const { ingredients } = state.constructorItems;
