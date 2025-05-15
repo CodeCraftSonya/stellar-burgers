@@ -1,13 +1,11 @@
 import { ProfileUI } from '@ui-pages';
 import { FC, SyntheticEvent, useEffect, useState } from 'react';
 import { RootState, useDispatch, useSelector } from '../../services/store';
-import { useNavigate } from 'react-router-dom';
 import { updateUserData } from '../../services/authSlice';
 
 export const Profile: FC = () => {
   const user = useSelector((state: RootState) => state.auth.user);
 
-  const navigate = useNavigate();
   const dispatch = useDispatch();
 
   const [formValue, setFormValue] = useState({
