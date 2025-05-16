@@ -1,11 +1,6 @@
-import {
-  createAsyncThunk,
-  createSlice,
-  nanoid,
-  PayloadAction
-} from '@reduxjs/toolkit';
+import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { orderBurgerApi } from '@api';
-import { TConstructorIngredient, TIngredient, TOrder } from '@utils-types';
+import { TConstructorIngredient, TOrder } from '@utils-types';
 
 type IOrderState = {
   isLoading: boolean;
@@ -48,16 +43,12 @@ const orderSlice = createSlice({
         : []
   },
   reducers: {
-    addIngredient: (state, action: PayloadAction<TIngredient>) => {
-      action.payload.type !== 'bun'
-        ? (state.constructorItems.ingredients = [
-            ...state.constructorItems.ingredients,
-            { ...action.payload, id: action.payload._id }
-          ])
-        : (state.constructorItems.bun = {
-            ...action.payload,
-            id: nanoid()
-          });
+    addIngredient: (state, action: PayloadAction<TConstructorIngredient>) => {
+      if (action.payload.type === 'bun') {
+        state.constructorItems.bun = action.payload;
+      } else {
+        state.constructorItems.ingredients.push(action.payload);
+      }
     },
     removeIngredient(state, action: PayloadAction<string>) {
       state.constructorItems.ingredients =

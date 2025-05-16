@@ -43,7 +43,7 @@ export const register = createAsyncThunk(
 
 export const login = createAsyncThunk(
   'user/login',
-  async (data: TLoginData, { dispatch }) => {
+  async (data: TLoginData) => {
     const response = await loginUserApi(data);
     localStorage.setItem('refreshToken', response.refreshToken);
     setCookie('accessToken', response.accessToken);
