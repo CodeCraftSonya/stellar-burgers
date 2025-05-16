@@ -16,12 +16,6 @@ export const Login: FC = () => {
     e.preventDefault();
 
     dispatch(login({ email, password }));
-
-    navigate(
-      state?.locationState?.background?.pathname
-        ? state.locationState.background.pathname
-        : '/'
-    );
   };
 
   return (

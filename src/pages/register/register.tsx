@@ -17,12 +17,6 @@ export const Register: FC = () => {
     e.preventDefault();
 
     dispatch(register({ email, name: userName, password }));
-
-    navigate(
-      state?.locationState?.background?.pathname
-        ? state.locationState.background.pathname
-        : '/'
-    );
   };
 
   return (

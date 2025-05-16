@@ -19,7 +19,8 @@ export const ProtectedRoute: FC<ProtectedRouteProps> = ({
   }
 
   if (onlyUnAuth && user) {
-    return <Navigate replace to='/' state={{ from: location }} />;
+    const { from } = location.state ?? { from: { pathname: '/' } };
+    return <Navigate to={from} />;
   }
 
   return children;
