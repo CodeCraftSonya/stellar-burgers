@@ -30,10 +30,13 @@ export const BurgerConstructor: FC = () => {
   const { user, isLoading } = useSelector((state: RootState) => state.auth);
 
   const onOrderClick = () => {
-    if (!user && !isLoading)
+    if (!user && !isLoading) {
       navigate('/login', {
         state: { locationState: { background: location } }
       });
+      return;
+    }
+
     if (constructorItems.bun && !orderRequest) {
       dispatch(sendOrder(newOrderData));
     } else return;

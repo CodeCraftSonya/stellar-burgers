@@ -1,5 +1,6 @@
 import {
   getOrdersApi,
+  getUserApi,
   loginUserApi,
   logoutApi,
   registerUserApi,
@@ -67,6 +68,11 @@ export const logout = createAsyncThunk('user/logout', async () => {
   deleteCookie('accessToken');
 });
 
+export const getUser = createAsyncThunk('user/getUser', async () => {
+  const response = await getUserApi();
+  return response.user;
+});
+
 export const userSlice = createSlice({
   name: 'user',
   initialState,
@@ -120,6 +126,18 @@ export const userSlice = createSlice({
         state.refreshToken = '';
         state.accessToken = '';
         state.orders = [];
+      })
+      .addCase(getUser.pending, (state) => {
+        state.isLoading = true;
+        state.isError = false;
+      })
+      .addCase(getUser.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.user = action.payload;
+      })
+      .addCase(getUser.rejected, (state) => {
+        state.isLoading = false;
+        state.user = null;
       });
   }
 });

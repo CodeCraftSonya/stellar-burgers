@@ -18,12 +18,14 @@ import { Modal } from '../modal';
 import { useDispatch } from '../../services/store';
 import { useEffect } from 'react';
 import { fetchIngredients } from '../../services/ingredientsSlice';
+import { getUser } from '../../services/authSlice';
 
 const App = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(fetchIngredients());
+    dispatch(getUser());
   }, [dispatch]);
 
   const location = useLocation();
