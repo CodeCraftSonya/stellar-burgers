@@ -33,12 +33,22 @@ const initialState: TUserState = {
 
 export const register = createAsyncThunk(
   'user/register',
-  async (data: TRegisterData) => await registerUserApi(data)
+  async (data: TRegisterData) => {
+    const response = await registerUserApi(data);
+    localStorage.setItem('refreshToken', response.refreshToken);
+    setCookie('accessToken', response.accessToken);
+    return response;
+  }
 );
 
 export const login = createAsyncThunk(
   'user/login',
-  async (data: TLoginData) => await loginUserApi(data)
+  async (data: TLoginData, { dispatch }) => {
+    const response = await loginUserApi(data);
+    localStorage.setItem('refreshToken', response.refreshToken);
+    setCookie('accessToken', response.accessToken);
+    return response;
+  }
 );
 
 export const updateUserData = createAsyncThunk(
@@ -51,10 +61,11 @@ export const getUserOrders = createAsyncThunk(
   async () => await getOrdersApi()
 );
 
-export const logout = createAsyncThunk(
-  'user/logout',
-  async () => await logoutApi()
-);
+export const logout = createAsyncThunk('user/logout', async () => {
+  await logoutApi();
+  localStorage.removeItem('refreshToken');
+  deleteCookie('accessToken');
+});
 
 export const userSlice = createSlice({
   name: 'user',
@@ -69,9 +80,7 @@ export const userSlice = createSlice({
       .addCase(login.fulfilled, (state, action) => {
         state.isLoading = false;
         state.refreshToken = action.payload.refreshToken;
-        localStorage.setItem('refreshToken', action.payload.refreshToken);
         state.accessToken = action.payload.accessToken;
-        setCookie('accessToken', action.payload.accessToken);
         state.user = action.payload.user;
       })
       .addCase(login.rejected, (state) => {
@@ -85,9 +94,7 @@ export const userSlice = createSlice({
       .addCase(register.fulfilled, (state, action) => {
         state.isLoading = false;
         state.refreshToken = action.payload.refreshToken;
-        localStorage.setItem('refreshToken', action.payload.refreshToken);
         state.accessToken = action.payload.accessToken;
-        setCookie('accessToken', action.payload.accessToken);
         state.user = action.payload.user;
       })
       .addCase(register.rejected, (state) => {
@@ -111,9 +118,7 @@ export const userSlice = createSlice({
       .addCase(logout.fulfilled, (state) => {
         state.user = null;
         state.refreshToken = '';
-        localStorage.removeItem('refreshToken');
         state.accessToken = '';
-        deleteCookie('accessToken');
         state.orders = [];
       });
   }
