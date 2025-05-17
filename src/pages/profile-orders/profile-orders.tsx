@@ -1,7 +1,7 @@
 import { ProfileOrdersUI } from '@ui-pages';
 import { FC, useEffect } from 'react';
 import { RootState, useDispatch, useSelector } from '../../services/store';
-import { getUserOrders } from '../../services/authSlice';
+import { getUserOrders } from '../../services/userSlice';
 
 export const ProfileOrders: FC = () => {
   const orders = useSelector((state: RootState) => state.auth.orders);

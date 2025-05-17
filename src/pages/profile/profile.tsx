@@ -1,7 +1,7 @@
 import { ProfileUI } from '@ui-pages';
 import { FC, SyntheticEvent, useEffect, useState } from 'react';
 import { RootState, useDispatch, useSelector } from '../../services/store';
-import { updateUserData } from '../../services/authSlice';
+import { updateUserData } from '../../services/userSlice';
 
 export const Profile: FC = () => {
   const user = useSelector((state: RootState) => state.auth.user);

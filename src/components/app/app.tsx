@@ -18,7 +18,7 @@ import { Modal } from '../modal';
 import { useDispatch } from '../../services/store';
 import { useEffect } from 'react';
 import { fetchIngredients } from '../../services/ingredientsSlice';
-import { getUser } from '../../services/authSlice';
+import { getUser } from '../../services/userSlice';
 
 const App = () => {
   const dispatch = useDispatch();
