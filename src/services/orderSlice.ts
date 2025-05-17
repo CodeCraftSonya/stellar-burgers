@@ -24,10 +24,7 @@ const initialState: IOrderState = {
   orderModalData: null
 };
 
-export const sendOrder = createAsyncThunk(
-  'order/sendOrder',
-  async (data: string[]) => await orderBurgerApi(data)
-);
+export const sendOrder = createAsyncThunk('order/sendOrder', orderBurgerApi);
 
 const orderSlice = createSlice({
   name: 'order',
