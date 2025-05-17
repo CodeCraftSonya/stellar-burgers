@@ -1,6 +1,11 @@
-import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import {
+  createAsyncThunk,
+  createSelector,
+  createSlice
+} from '@reduxjs/toolkit';
 import { getIngredientsApi } from '@api';
 import { TIngredient } from '@utils-types';
+import { RootState } from './store';
 
 export const fetchIngredients = createAsyncThunk(
   'ingredients/getIngredients',
@@ -41,3 +46,12 @@ const ingredientsSlice = createSlice({
 });
 
 export default ingredientsSlice.reducer;
+
+export const selectFilteredIngredients = createSelector(
+  (state: RootState) => state.ingredients.items,
+  (items) => ({
+    buns: items.filter((item) => item.type === 'bun'),
+    mains: items.filter((item) => item.type === 'main'),
+    sauces: items.filter((item) => item.type === 'sauce')
+  })
+);
