@@ -26,19 +26,9 @@ const initialState: IOrderState = {
 
 export const sendOrder = createAsyncThunk('order/sendOrder', orderBurgerApi);
 
-const orderSlice = createSlice({
+export const orderSlice = createSlice({
   name: 'order',
   initialState,
-  selectors: {
-    getNewOrderData: (state) =>
-      state.constructorItems.bun?._id
-        ? [
-            state.constructorItems.bun._id,
-            ...state.constructorItems.ingredients.map((item) => item._id),
-            state.constructorItems.bun._id
-          ]
-        : []
-  },
   reducers: {
     addIngredient: (state, action: PayloadAction<TConstructorIngredient>) => {
       if (action.payload.type === 'bun') {
@@ -109,10 +99,23 @@ const orderSlice = createSlice({
         state.isError = true;
         state.orderModalData = null;
       });
+  },
+  selectors: {
+    getNewOrderData: (state) =>
+      state.constructorItems.bun?._id
+        ? [
+            state.constructorItems.bun._id,
+            ...state.constructorItems.ingredients.map((item) => item._id),
+            state.constructorItems.bun._id
+          ]
+        : [],
+    selectOrderRequest: (state) => state.orderRequest,
+    selectOrderModalData: (state) => state.orderModalData,
+    selectConstructorItems: (state) => state.constructorItems,
+    selectIsLoading: (state) => state.isLoading,
+    selectIsError: (state) => state.isError
   }
 });
-
-export const { getNewOrderData } = orderSlice.selectors;
 
 export const {
   addIngredient,

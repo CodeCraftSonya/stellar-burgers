@@ -2,10 +2,12 @@ import { Preloader } from '@ui';
 import { FeedUI } from '@ui-pages';
 import { FC, useEffect } from 'react';
 import { useDispatch, useSelector } from '../../services/store';
-import { fetchFeed } from '../../services/feedSlice';
+import { FeedSlice, fetchFeed } from '../../services/feedSlice';
+
+const { selectOrders } = FeedSlice.selectors;
 
 export const Feed: FC = () => {
-  const { orders } = useSelector((state) => state.feed);
+  const orders = useSelector(selectOrders);
 
   const dispatch = useDispatch();
 

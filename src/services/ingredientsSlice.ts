@@ -24,7 +24,7 @@ const initialState: IIngredientsState = {
   error: null
 };
 
-const ingredientsSlice = createSlice({
+export const ingredientsSlice = createSlice({
   name: 'ingredients',
   initialState,
   reducers: {},
@@ -42,6 +42,11 @@ const ingredientsSlice = createSlice({
         state.loading = false;
         state.items = action.payload;
       });
+  },
+  selectors: {
+    selectIngredients: (state) => state.items,
+    selectIngredientsLoading: (state) => state.loading,
+    selectIngredientsError: (state) => state.error
   }
 });
 

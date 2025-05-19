@@ -44,6 +44,12 @@ export const FeedSlice = createSlice({
         state.isLoading = false;
         state.isError = true;
       });
+  },
+  selectors: {
+    selectOrders: (state) => state.orders,
+    selectFeedTotals: (state) => state.feed,
+    selectIsLoading: (state) => state.isLoading,
+    selectIsError: (state) => state.isError
   }
 });
 

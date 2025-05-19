@@ -1,25 +1,29 @@
 import { FC, useMemo } from 'react';
 import { TConstructorIngredient } from '@utils-types';
 import { BurgerConstructorUI } from '@ui';
-import { RootState, useDispatch, useSelector } from '../../services/store';
+import { useDispatch, useSelector } from '../../services/store';
 import {
   clearConstructor,
-  getNewOrderData,
+  orderSlice,
   sendOrder,
   setOrderModalData
 } from '../../services/orderSlice';
 import { useLocation, useNavigate } from 'react-router-dom';
+import { userSlice } from '../../services/userSlice';
+
+const {
+  getNewOrderData,
+  selectOrderRequest,
+  selectOrderModalData,
+  selectConstructorItems
+} = orderSlice.selectors;
+
+const { selectUser, selectUserIsLoading } = userSlice.selectors;
 
 export const BurgerConstructor: FC = () => {
-  const constructorItems = useSelector(
-    (state: RootState) => state.order.constructorItems
-  );
-  const orderRequest = useSelector(
-    (state: RootState) => state.order.orderRequest
-  );
-  const orderModalData = useSelector(
-    (state: RootState) => state.order.orderModalData
-  );
+  const constructorItems = useSelector(selectConstructorItems);
+  const orderRequest = useSelector(selectOrderRequest);
+  const orderModalData = useSelector(selectOrderModalData);
   const newOrderData = useSelector((state) =>
     getNewOrderData({ order: state.order })
   );
@@ -27,7 +31,8 @@ export const BurgerConstructor: FC = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const location = useLocation();
-  const { user, isLoading } = useSelector((state: RootState) => state.auth);
+  const isLoading = useSelector(selectUserIsLoading);
+  const user = useSelector(selectUser);
 
   const onOrderClick = () => {
     if (!user && !isLoading) {

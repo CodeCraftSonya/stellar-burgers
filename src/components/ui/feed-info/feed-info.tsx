@@ -4,9 +4,14 @@ import styles from './feed-info.module.css';
 
 import { FeedInfoUIProps, HalfColumnProps, TColumnProps } from './type';
 
+import { FeedSlice } from '../../../services/feedSlice';
+import { useSelector } from '../../../services/store';
+
+const { selectFeedTotals } = FeedSlice.selectors;
+
 export const FeedInfoUI: FC<FeedInfoUIProps> = memo(
   ({ feed, readyOrders, pendingOrders }) => {
-    const { total, totalToday } = feed;
+    const { total, totalToday } = useSelector(selectFeedTotals);
 
     return (
       <section>

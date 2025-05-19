@@ -136,6 +136,15 @@ export const userSlice = createSlice({
         state.isLoading = false;
         state.user = null;
       });
+  },
+  selectors: {
+    selectUserOrders: (state) => state.orders,
+    selectUser: (state) => state.user,
+    selectUserIsLoading: (state) => state.isLoading,
+    selectUserIsError: (state) => state.isError,
+    selectRefreshToken: (state) => state.refreshToken,
+    selectAccessToken: (state) => state.accessToken,
+    selectOrderRequest: (state) => state.orderRequest
   }
 });
 

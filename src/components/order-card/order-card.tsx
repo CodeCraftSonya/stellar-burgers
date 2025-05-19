@@ -4,8 +4,13 @@ import { useLocation } from 'react-router-dom';
 import { OrderCardProps } from './type';
 import { TIngredient } from '@utils-types';
 import { OrderCardUI } from '../ui/order-card';
-import { RootState, useDispatch, useSelector } from '../../services/store';
-import { fetchIngredients } from '../../services/ingredientsSlice';
+import { useDispatch, useSelector } from '../../services/store';
+import {
+  fetchIngredients,
+  ingredientsSlice
+} from '../../services/ingredientsSlice';
+
+const { selectIngredients } = ingredientsSlice.selectors;
 
 const maxIngredients = 6;
 
@@ -13,9 +18,7 @@ export const OrderCard: FC<OrderCardProps> = memo(({ order }) => {
   const location = useLocation();
   const dispatch = useDispatch();
 
-  const ingredients = useSelector(
-    (state: RootState) => state.ingredients.items
-  );
+  const ingredients = useSelector(selectIngredients);
 
   useEffect(() => {
     if (!ingredients.length) {
