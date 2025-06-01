@@ -5,7 +5,7 @@ import {
 } from '@reduxjs/toolkit';
 import { getIngredientsApi } from '@api';
 import { TIngredient } from '@utils-types';
-import { RootState } from './store';
+import { RootState } from '../store/store';
 
 export const fetchIngredients = createAsyncThunk(
   'ingredients/getIngredients',

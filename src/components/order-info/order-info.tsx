@@ -3,12 +3,16 @@ import { Preloader } from '../ui/preloader';
 import { OrderInfoUI } from '../ui/order-info';
 import { TIngredient } from '@utils-types';
 import { useParams } from 'react-router-dom';
-import { RootState, useDispatch, useSelector } from '../../services/store';
-import { fetchFeed } from '../../services/feedSlice';
+import {
+  RootState,
+  useDispatch,
+  useSelector
+} from '../../services/store/store';
+import { fetchFeed } from '../../services/feedSlice/feedSlice';
 import {
   fetchIngredients,
   ingredientsSlice
-} from '../../services/ingredientsSlice';
+} from '../../services/ingredientsSlice/ingredientsSlice';
 
 const { selectIngredients } = ingredientsSlice.selectors;
 

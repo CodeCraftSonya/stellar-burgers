@@ -4,8 +4,8 @@ import styles from './feed-info.module.css';
 
 import { FeedInfoUIProps, HalfColumnProps, TColumnProps } from './type';
 
-import { FeedSlice } from '../../../services/feedSlice';
-import { useSelector } from '../../../services/store';
+import { FeedSlice } from '../../../services/feedSlice/feedSlice';
+import { useSelector } from '../../../services/store/store';
 
 const { selectFeedTotals } = FeedSlice.selectors;
 

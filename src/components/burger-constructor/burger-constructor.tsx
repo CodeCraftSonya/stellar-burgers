@@ -1,15 +1,15 @@
 import { FC, useMemo } from 'react';
 import { TConstructorIngredient } from '@utils-types';
 import { BurgerConstructorUI } from '@ui';
-import { useDispatch, useSelector } from '../../services/store';
+import { useDispatch, useSelector } from '../../services/store/store';
 import {
   clearConstructor,
   orderSlice,
   sendOrder,
   setOrderModalData
-} from '../../services/orderSlice';
+} from '../../services/orderSlice/orderSlice';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { userSlice } from '../../services/userSlice';
+import { userSlice } from '../../services/userSlice/userSlice';
 
 const {
   getNewOrderData,
