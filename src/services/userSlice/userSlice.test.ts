@@ -1,6 +1,7 @@
 import {
   getUser,
   getUserOrders,
+  initialState,
   login,
   logout,
   register,
@@ -9,16 +10,6 @@ import {
 } from './userSlice';
 
 describe('userSlice reducers tests', () => {
-  const initialState = {
-    isLoading: false,
-    isError: false,
-    refreshToken: localStorage.getItem('refreshToken') ?? '',
-    accessToken: '',
-    user: null,
-    orders: [],
-    orderRequest: false
-  };
-
   const mockAuthResponse = {
     success: true,
     accessToken: 'accessToken',

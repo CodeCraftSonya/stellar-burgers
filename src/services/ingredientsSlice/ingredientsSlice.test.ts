@@ -1,12 +1,10 @@
-import { fetchIngredients, ingredientsSlice } from './ingredientsSlice';
+import {
+  fetchIngredients,
+  ingredientsSlice,
+  initialState
+} from './ingredientsSlice';
 
 describe('ingredientsSlice reducers tests', () => {
-  const initialState = {
-    items: [],
-    loading: false,
-    error: null
-  };
-
   const mockIngredients = [
     {
       id: 'id1',

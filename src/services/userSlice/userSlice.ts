@@ -22,7 +22,7 @@ type TUserState = {
   orderRequest: boolean;
 };
 
-const initialState: TUserState = {
+export const initialState: TUserState = {
   isLoading: false,
   isError: false,
   refreshToken: localStorage.getItem('refreshToken') ?? '',

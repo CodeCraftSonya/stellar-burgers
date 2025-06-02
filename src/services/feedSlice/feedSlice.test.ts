@@ -1,15 +1,6 @@
-import feedReducer, { fetchFeed } from './feedSlice';
+import feedReducer, { fetchFeed, initialState } from './feedSlice';
 
 describe('feedSlice reducers tests', () => {
-  const initialState = {
-    isLoading: false,
-    isError: false,
-    feed: {
-      total: 0,
-      totalToday: 0
-    },
-    orders: []
-  };
   const mockFeedsResponse = {
     total: 5,
     totalToday: 10,

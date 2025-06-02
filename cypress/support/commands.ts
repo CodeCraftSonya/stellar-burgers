@@ -1,37 +1,42 @@
 /// <reference types="cypress" />
-// ***********************************************
-// This example commands.ts shows you how to
-// create various custom commands and overwrite
-// existing commands.
-//
-// For more comprehensive examples of custom
-// commands please read more here:
-// https://on.cypress.io/custom-commands
-// ***********************************************
-//
-//
-// -- This is a parent command --
-// Cypress.Commands.add('login', (email, password) => { ... })
-//
-//
-// -- This is a child command --
-// Cypress.Commands.add('drag', { prevSubject: 'element'}, (subject, options) => { ... })
-//
-//
-// -- This is a dual command --
-// Cypress.Commands.add('dismiss', { prevSubject: 'optional'}, (subject, options) => { ... })
-//
-//
-// -- This will overwrite an existing command --
-// Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
-//
-// declare global {
-//   namespace Cypress {
-//     interface Chainable {
-//       login(email: string, password: string): Chainable<void>
-//       drag(subject: string, options?: Partial<TypeOptions>): Chainable<Element>
-//       dismiss(subject: string, options?: Partial<TypeOptions>): Chainable<Element>
-//       visit(originalFn: CommandOriginalFn, url: string, options: Partial<VisitOptions>): Chainable<Element>
-//     }
-//   }
-// }
+import {
+  closeModalSelector,
+  ingredientCardLinkSelector,
+  ingredientCardSelector,
+  modalSelector
+} from '../e2e/constructor/constants';
+
+Cypress.Commands.add('addIngredientByName', (ingredientName: string) => {
+  cy.contains(ingredientCardSelector, ingredientName)
+    .should('exist')
+    .within(() => {
+      cy.contains('button', 'Добавить').should('exist').click();
+    });
+});
+
+Cypress.Commands.add('openIngredientModal', (ingredientName: string) => {
+  cy.contains(ingredientCardLinkSelector, ingredientName)
+    .should('exist')
+    .click();
+});
+
+Cypress.Commands.add('closeModal', () => {
+  cy.get('#modals')
+    .find(modalSelector)
+    .should('exist')
+    .find(closeModalSelector)
+    .should('exist')
+    .click();
+});
+
+declare global {
+  namespace Cypress {
+    interface Chainable {
+      addIngredientByName(ingredientName: string): Chainable<void>;
+      openIngredientModal(ingredientName: string): Chainable<void>;
+      closeModal(): Chainable<void>;
+    }
+  }
+}
+
+export {};
