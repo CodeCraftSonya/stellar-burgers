@@ -103,9 +103,9 @@ describe('Constructor Testing', () => {
       );
       window.localStorage.setItem(
         'refreshToken',
-        JSON.stringify('fakeRefreshToken')
+        JSON.stringify('mockRefreshToken')
       );
-      cy.setCookie('accessToken', 'fakeAccessToken');
+      cy.setCookie('accessToken', 'mockAccessToken');
       cy.visit('/');
     });
     afterEach(() => {

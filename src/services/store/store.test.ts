@@ -1,10 +1,8 @@
-import { configureStore } from '@reduxjs/toolkit';
 import { rootReducer } from './store';
 
 describe('tests for store configuration', () => {
-  it('create store with rootReducer', () => {
-    const store = configureStore({ reducer: rootReducer });
-    const state = store.getState();
+  it('returns initial state for unknown action', () => {
+    const state = rootReducer(undefined, { type: 'UNKNOWN_ACTION' });
 
     expect(state).toHaveProperty('ingredients');
     expect(state).toHaveProperty('order');

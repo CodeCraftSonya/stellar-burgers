@@ -8,5 +8,8 @@ export default {
     prefix: '<rootDir>/'
   }),
   modulePaths: ['<rootDir>'],
-  roots: ['<rootDir>/src']
+  roots: ['<rootDir>/src'],
+  collectCoverage: true,
+  coverageDirectory: 'coverage',
+  coverageReporters: ['text', 'lcov']
 };
