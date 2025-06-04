@@ -2,8 +2,8 @@ import { FC } from 'react';
 
 import { TOrder } from '@utils-types';
 import { FeedInfoUI } from '../ui/feed-info';
-import { useSelector } from '../../services/store';
-import { FeedSlice } from '../../services/feedSlice';
+import { useSelector } from '../../services/store/store';
+import { FeedSlice } from '../../services/feedSlice/feedSlice';
 
 const { selectOrders, selectFeedTotals } = FeedSlice.selectors;
 

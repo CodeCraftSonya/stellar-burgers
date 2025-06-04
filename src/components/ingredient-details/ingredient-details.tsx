@@ -1,7 +1,7 @@
 import { FC } from 'react';
 import { Preloader } from '../ui/preloader';
 import { IngredientDetailsUI } from '../ui/ingredient-details';
-import { RootState, useSelector } from '../../services/store';
+import { RootState, useSelector } from '../../services/store/store';
 
 export const IngredientDetails: FC = () => {
   const ingredientData = useSelector((state: RootState) =>

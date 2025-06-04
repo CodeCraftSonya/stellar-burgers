@@ -4,11 +4,11 @@ import { useLocation } from 'react-router-dom';
 import { OrderCardProps } from './type';
 import { TIngredient } from '@utils-types';
 import { OrderCardUI } from '../ui/order-card';
-import { useDispatch, useSelector } from '../../services/store';
+import { useDispatch, useSelector } from '../../services/store/store';
 import {
   fetchIngredients,
   ingredientsSlice
-} from '../../services/ingredientsSlice';
+} from '../../services/ingredientsSlice/ingredientsSlice';
 
 const { selectIngredients } = ingredientsSlice.selectors;
 

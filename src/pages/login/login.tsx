@@ -1,7 +1,7 @@
 import { FC, SyntheticEvent, useState } from 'react';
 import { LoginUI } from '@ui-pages';
-import { useDispatch, useSelector } from '../../services/store';
-import { login, userSlice } from '../../services/userSlice';
+import { useDispatch, useSelector } from '../../services/store/store';
+import { login, userSlice } from '../../services/userSlice/userSlice';
 
 const { selectUserIsError } = userSlice.selectors;
 

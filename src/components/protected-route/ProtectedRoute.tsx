@@ -1,7 +1,7 @@
 import { Navigate, useLocation } from 'react-router-dom';
 import { FC, ReactElement } from 'react';
-import { useSelector } from '../../services/store';
-import { userSlice } from '../../services/userSlice';
+import { useSelector } from '../../services/store/store';
+import { userSlice } from '../../services/userSlice/userSlice';
 
 interface ProtectedRouteProps {
   onlyUnAuth?: boolean;

@@ -3,12 +3,12 @@ import { useInView } from 'react-intersection-observer';
 
 import { TTabMode } from '@utils-types';
 import { BurgerIngredientsUI } from '../ui/burger-ingredients';
-import { useSelector } from '../../services/store';
+import { useSelector } from '../../services/store/store';
 import { Preloader } from '@ui';
 import {
   ingredientsSlice,
   selectFilteredIngredients
-} from '../../services/ingredientsSlice';
+} from '../../services/ingredientsSlice/ingredientsSlice';
 
 const { selectIngredientsLoading } = ingredientsSlice.selectors;
 

@@ -1,8 +1,8 @@
 import { Preloader } from '@ui';
 import { FeedUI } from '@ui-pages';
 import { FC, useEffect } from 'react';
-import { useDispatch, useSelector } from '../../services/store';
-import { FeedSlice, fetchFeed } from '../../services/feedSlice';
+import { useDispatch, useSelector } from '../../services/store/store';
+import { FeedSlice, fetchFeed } from '../../services/feedSlice/feedSlice';
 
 const { selectOrders } = FeedSlice.selectors;
 
