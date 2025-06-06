@@ -1,19 +1,25 @@
-# Проектная работа 11-го спринта
+# Project work
 
-[Макет](<https://www.figma.com/file/vIywAvqfkOIRWGOkfOnReY/React-Fullstack_-Проектные-задачи-(3-месяца)_external_link?type=design&node-id=0-1&mode=design>)
+## Done:
 
-[Чеклист](https://www.notion.so/praktikum/0527c10b723d4873aa75686bad54b32e?pvs=4)
+- Set up the routing.
+- Write the functionality of requesting data from the server using Redux and the global store.
+- Set up authorization and create secure routers.
+- Write tests that check the operation of modal windows, the creation of orders and the operation of slice reducers.
 
-## Этапы работы:
+## Technologies
 
-1. Разверните проект и ознакомьтесь с кодом. Все необходимые вам компоненты уже созданы и лежат в папке `src/components`
+React + TypeScript + Redux Devtools + Jest + Cypress
 
-2. Настройте роутинг.
+## How to launch
 
-3. Напишите функционал запросов данных с сервера, используя `Redux` и глобальный `store`. Сами "ручки" уже прописаны и лежат в `utils/burger-api.ts`
+1. ```npm install``` - installing dependencies
+2. ```npm run start``` - launching a project in development mode
 
-4. Настройте авторизацию и создайте защищённые роуты.
+![image](https://github.com/user-attachments/assets/752ef62d-6a03-4ad5-9b15-746d4ed5b2dd)
+![image](https://github.com/user-attachments/assets/a4b77e0c-b484-4f85-aec8-719730212c21)
+![image](https://github.com/user-attachments/assets/a8bec7db-06dd-4e47-aa28-28026b14615f)
+![image](https://github.com/user-attachments/assets/c042f1f3-085c-4546-b9eb-cdfc6e9d7b59)
 
-## Важно:
 
-Для корректной работы запросов к серверу необходимо добавить переменную BURGER_API_URL в окружение. Сама ссылка находится в файле `.env.example`.
+
