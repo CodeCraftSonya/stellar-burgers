@@ -9,7 +9,7 @@
 
 ## Technologies
 
-React + TypeScript + Redux Devtools + Jest + Cypress
+React + TypeScript + Redux Toolkit + Jest + Cypress
 
 ## How to launch
 
